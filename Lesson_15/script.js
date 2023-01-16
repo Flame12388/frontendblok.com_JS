@@ -19,7 +19,8 @@ let taxi = {  //создаём объект 'такси'
     mileage: 58000,
     started: true,
     start: function(){
-        this.started  = true; //'this' указывает на то, что это метод текущего объекта 'taxi', без него выскакивает ошибка.
+        this.started  = true; //'this' указывает на то, что это метод текущего объекта 'taxi',
+        // без него выскакивает ошибка.
     },
     stop: function(){
         this.started = false;
