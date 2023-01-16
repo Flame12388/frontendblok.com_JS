@@ -162,7 +162,3 @@ let my = function(a,b){
 };
 d4.sort(my);
 console.log(d4);
-// d4.sort(function(a,b){ // //--//--//
-//     return 0.5 - Math.random();          // сортировка элементов массива в случайном порядке.
-// });
-// console.log(d4);
