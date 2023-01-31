@@ -67,21 +67,49 @@ worker = new worker("Nikolay", "Workoff", 7000, 21); //создаём экзем
 console.log(worker.name);
 console.log(worker.surname);
 console.log(worker.getSalary());
+
 //Домашнее задание
 // Создайте объект city1 (var city1 = {}), укажите у него свойства name ***
 // (название города, строка) со значением «ГородN» и population ***
 // (населенность города, число) со значением 10 млн.***
 
+let city1 = {};
+    city1.name = "ГородN";
+    city1.population = 10000000;
+    city1.getName = function(){
+        return this.name;
+    };
+    city1.exportStr = function(){
+        return "name=" + this.name + "\\" + this.population +"\\n";
+    };
+    city1.getCity = function(){
+        return getObj.name;
+    }
+let city2 = {
+    name: "ГородM",
+    population: 1e6,
+    getName(){
+        return this.name;
+    },
+    exportStr(){
+    return "name=" + this.name + "\\" + this.population +"\\n";
+    },
+    // getCity(){
+    //     return getObj();
+    // }
+    
+};
 
 
-// var city1 = {};
-// city1.name = "ГородN";
-// city1.population = 1000000;
-// city1.getName = function(){
-//     console.log(city1.name);
-// };
-// city1.getName();
-// city1.exportStr = function(){    
+let getObj = function(){
+    return this;
+};
+
+
+
+console.log(`Первый город называется: ${city1.getName()}, Второй город называется: ${city2.getName()}`);
+console.log(`Первый город : ${city1.exportStr()}, Второй город: ${city2.exportStr()}`);
+
 //         return "name=" + this.name + "\\" + this.population +"\\n";
 //     };
 // city1.getCity(getObj());
@@ -93,20 +121,12 @@ console.log(worker.getSalary());
 // name: "ГородM",
 // population: 1e6
 // };
-// city2.getName = function(){
-//     console.log(city2.name);
-// };
-// city2.getName();
-// city2.exportStr = function(){
+// 
 //     return "name=" + this.name + "\\" + this.population +"\\n";
 // };
 // console.log(city2.exportStr());
 
-// let getObj = function (name, population){    
-//     this.name = name;
-//     this.population = population;
-//     return this;
-// };
+// 
  
 
 // Создайте у объектов city1 и city2 методы getName(), которые вернут  ***

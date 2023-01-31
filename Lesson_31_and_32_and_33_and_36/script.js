@@ -102,7 +102,7 @@ const modalTrigger = document.querySelectorAll('[data-modal]'),
     //               document.body.style.overflow = '';
     //         }
     //   });
-    //Домашнее Задание
+    //Домашнее Задание (Lesson_33)
     function modalWindowClose(){
         modal.classList.add('hide');
         modal.classList.remove('show');
@@ -123,4 +123,55 @@ const modalTrigger = document.querySelectorAll('[data-modal]'),
                 }
     });
 
+//Lesson_36
+//Slider
+const slides = document.querySelectorAll('.offer__slide'),
+      prev = document.querySelector('.offer__slider-prev'),
+      next = document.querySelector('.offer__slider-next'),
+      total = document.querySelector('#total'),
+      current = document.querySelector('#current');
+let slideIndex = 1;
+showSlides(slideIndex);
+
+if(slides.length < 10){
+    total.textContent = `0${slides.length}`;
+}else{
+    total.textContent = slides.length;
+}
+
+function showSlides(n){
+    if(n > slides.length) {
+        slideIndex = 1;
+    }
+    if(n < 1){
+        slideIndex = slides.length;
+    }
+    // slides.forEach(item => item.style.display = 'none');
+    // slides[slideIndex - 1].style.display = 'block';
+
+    //ДЗ_Lesson_36
+    slides.forEach(item => item.classList.add('hide'));
+    slides[slideIndex -1].classList.remove('hide');
+    slides[slideIndex -1].classList.add('show');
+    //ДЗ_Lesson_36
+    
+    if(slides.length < 10){
+        current.textContent = `0${slideIndex}`;
+    }else{
+        current.textContent = slideIndex;
+    }
+}
+function plusSlides(n){
+    showSlides(slideIndex += n);
+}
+prev.addEventListener('click', () =>{ 
+    plusSlides(-1);
 });
+next.addEventListener('click', () =>{ 
+    plusSlides(1);
+});
+
+});
+
+
+
