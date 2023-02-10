@@ -83,7 +83,7 @@ let city1 = {};
         return "name=" + this.name + "\\" + this.population +"\\n";
     };
     city1.getCity = function(){
-        return getObj.name;
+        return getObj();
     }
 let city2 = {
     name: "ГородM",
@@ -94,27 +94,18 @@ let city2 = {
     exportStr(){
     return "name=" + this.name + "\\" + this.population +"\\n";
     },
-    // getCity(){
-    //     return getObj();
-    // }
+    getCity(){
+     }
     
 };
-
 
 let getObj = function(){
     return this;
 };
-
-
-
 console.log(`Первый город называется: ${city1.getName()}, Второй город называется: ${city2.getName()}`);
 console.log(`Первый город : ${city1.exportStr()}, Второй город: ${city2.exportStr()}`);
+console.log(`Проверка метода ${city1.getCity()}`)
 
-//         return "name=" + this.name + "\\" + this.population +"\\n";
-//     };
-// city1.getCity(getObj());
-// console.log(city1.exportStr());
-// console.log(getCity());
 
 // // Создайте объект city2 через нотацию {name: "ГородM", population: 1e6}. ***
 // let city2 ={
