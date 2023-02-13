@@ -824,131 +824,131 @@ $(document).ready(function () {
 window.addEventListener('DOMContentLoaded', ()=>{
  //Табы
  'use strict';
-    // const tabs = document.querySelectorAll('.hero-menu_header li'), // Берём все табы меню
-    // linksOfTabs = document.querySelectorAll('.hero-menu_header a'), // Берём все ссылки меню
-    // tabsContent = document.querySelectorAll('.tab-content'),  // Берём контент для отображения
-    // tabsParent = document.querySelector('.tabs-menu'); //правильное определение блока-родителя решает всё! =)       
+    const tabs = document.querySelectorAll('.hero-menu_header li'), // Берём все табы меню
+    linksOfTabs = document.querySelectorAll('.hero-menu_header a'), // Берём все ссылки меню
+    tabsContent = document.querySelectorAll('.tab-content'),  // Берём контент для отображения
+    tabsParent = document.querySelector('.tabs-menu'); //правильное определение блока-родителя решает всё! =)       
     
-    // //Прячем неактивные элементы:
-    // function hideTabContent(){ 
-    //     tabsContent.forEach(item => {
-    //         item.style.display = 'none';
-    //     });
-    //     tabs.forEach(item => {
-    //         item.classList.remove('current');
-    //     });
-    // }
-    // //Показываем активные элементы:
-    // function showTabContent(i = 0){ //показываем нулевой (он же первый) элемент массива
-    //     tabsContent[i].style.display ='block';
-    //     tabs[i].classList.add('current');        
-    //     tabs[i].onclick = linksOfTabs[i].click(); //клик по табу = клик по ссылке
+    //Прячем неактивные элементы:
+    function hideTabContent(){ 
+        tabsContent.forEach(item => {
+            item.style.display = 'none';
+        });
+        tabs.forEach(item => {
+            item.classList.remove('current');
+        });
+    }
+    //Показываем активные элементы:
+    function showTabContent(i = 0){ //показываем нулевой (он же первый) элемент массива
+        tabsContent[i].style.display ='block';
+        tabs[i].classList.add('current');        
+        tabs[i].onclick = linksOfTabs[i].click(); //клик по табу = клик по ссылке
         
-    // }        
+    }        
 
-    // hideTabContent();
-    // showTabContent();  
+    hideTabContent();
+    showTabContent();  
   
-    // tabsParent.addEventListener('click', (event) => { //вешаем обработчик события на родительский блок (список - 'ul');
-    //     const target = event.target;    // Определяем область клика
+    tabsParent.addEventListener('click', (event) => { //вешаем обработчик события на родительский блок (список - 'ul');
+        const target = event.target;    // Определяем область клика
                 
-    //     if(target && target.tagName == 'A'){    // если область клика является ссылкой:
-    //         linksOfTabs.forEach((item, i) =>{ // для ссылок
-    //             if(target == item){
-    //                 hideTabContent();
-    //                 showTabContent(i);
-    //             }                
-    //         });
-    //     }else if(target && target.tagName =='LI'){ // если область клика является элементом списка:
-    //         tabs.forEach((item , i) => { // для табов
-    //             if(target == item){                 
-    //                 hideTabContent();
-    //                 showTabContent(i);                      
-    //             }                
-    //         });
-    //     }
-    // });
+        if(target && target.tagName == 'A'){    // если область клика является ссылкой:
+            linksOfTabs.forEach((item, i) =>{ // для ссылок
+                if(target == item){
+                    hideTabContent();
+                    showTabContent(i);
+                }                
+            });
+        }else if(target && target.tagName =='LI'){ // если область клика является элементом списка:
+            tabs.forEach((item , i) => { // для табов
+                if(target == item){                 
+                    hideTabContent();
+                    showTabContent(i);                      
+                }                
+            });
+        }
+    });
 
-    // tabsParent.addEventListener('mouseover', (event) => { // меняем стиль курсора при наведении на меню
-    //     const target = event.target;
-    //     if(target && target.tagName == 'LI'){
-    //         tabs.forEach((item) => {
-    //             if(target == item){
-    //                 item.style.cursor = 'pointer'; 
-    //             }
-    //         });
-    //     }
-    // });
+    tabsParent.addEventListener('mouseover', (event) => { // меняем стиль курсора при наведении на меню
+        const target = event.target;
+        if(target && target.tagName == 'LI'){
+            tabs.forEach((item) => {
+                if(target == item){
+                    item.style.cursor = 'pointer'; 
+                }
+            });
+        }
+    });
 
-    // // Слайдер
-    // const slides = document.querySelectorAll('.events-carousel .swiper-slide'),//вначале класс блока-родителя через пробел, 
-    //                                                                            //иначе цепляются лишние слайды из другой карусели
-    //       prev = document.querySelector('.ec-button-prev'),
-    //       next = document.querySelector('.ec-button-next');
+    // Слайдер
+    const slides = document.querySelectorAll('.events-carousel .swiper-slide'),//вначале класс блока-родителя через пробел, 
+                                                                               //иначе цепляются лишние слайды из другой карусели
+          prev = document.querySelector('.ec-button-prev'),
+          next = document.querySelector('.ec-button-next');
         
 
-    // let slideIndex = 1;
-    // showSlides(slideIndex);
+    let slideIndex = 1;
+    showSlides(slideIndex);
 
-    // function showSlides(n){  // в качестве параметра 'n' будем передавать 'slideIndex'
-    //     if(n > slides.length){
-    //         slideIndex = 1;
-    //     }
-    //     if(n < 1){
-    //         slideIndex = slides.length;
-    //     }
-    //     slides.forEach(item => {
-    //         item.style.display = 'none';            
-    //     }); //прячем все слайды
-    //     slides[slideIndex -1].style.display = 'block'; //показываем первый слайд (слайд с индексом '0')
+    function showSlides(n){  // в качестве параметра 'n' будем передавать 'slideIndex'
+        if(n > slides.length){
+            slideIndex = 1;
+        }
+        if(n < 1){
+            slideIndex = slides.length;
+        }
+        slides.forEach(item => {
+            item.style.display = 'none';            
+        }); //прячем все слайды
+        slides[slideIndex -1].style.display = 'block'; //показываем первый слайд (слайд с индексом '0')
        
-    // }
+    }
 
     
 
-    // function plusSlides(n){ //функция управления слайдами
-    //     showSlides(slideIndex += n);
-    // }
+    function plusSlides(n){ //функция управления слайдами
+        showSlides(slideIndex += n);
+    }
 
-    // prev.addEventListener('click', () => {
-    //     plusSlides(-1);
-    // });
+    prev.addEventListener('click', () => {
+        plusSlides(-1);
+    });
 
-    // next.addEventListener('click', () => {
-    //     plusSlides(1);
-    // });
+    next.addEventListener('click', () => {
+        plusSlides(1);
+    });
 
-    // //Слайдер2
+    //Слайдер2
 
-    // const tcSlides = document.querySelectorAll('.testimonilas-carousel .swiper-slide'),
-    //       tcPrev = document.querySelector('.tc-button-prev'),
-    //       tcNext = document.querySelector('.tc-button-next');
+    const tcSlides = document.querySelectorAll('.testimonilas-carousel .swiper-slide'),
+          tcPrev = document.querySelector('.tc-button-prev'),
+          tcNext = document.querySelector('.tc-button-next');
           
-    //       let tcSlideIndex = 1;
-    //       tcShowSlides(tcSlideIndex);
+          let tcSlideIndex = 1;
+          tcShowSlides(tcSlideIndex);
 
-    //       function tcShowSlides(n){
-    //         if(n > tcSlides.length){
-    //             tcSlideIndex = 1;
-    //         }
-    //         if(n < 1){
-    //             tcSlideIndex = tcSlides.length;
-    //         }
-    //         tcSlides.forEach(item => item.style.display = 'none');
-    //         tcSlides[tcSlideIndex-1].style.display = 'block';
-    //       }
+          function tcShowSlides(n){
+            if(n > tcSlides.length){
+                tcSlideIndex = 1;
+            }
+            if(n < 1){
+                tcSlideIndex = tcSlides.length;
+            }
+            tcSlides.forEach(item => item.style.display = 'none');
+            tcSlides[tcSlideIndex-1].style.display = 'block';
+          }
 
-    //       function tcPlusSlides(n){
-    //             tcShowSlides(tcSlideIndex +=n);
-    //       }
+          function tcPlusSlides(n){
+                tcShowSlides(tcSlideIndex +=n);
+          }
 
-    //       tcPrev.addEventListener('click', () => {
-    //             tcPlusSlides(-1);
-    //       });
+          tcPrev.addEventListener('click', () => {
+                tcPlusSlides(-1);
+          });
 
-    //       tcNext.addEventListener('click', () => {
-    //             tcPlusSlides(1);
-    //       });
+          tcNext.addEventListener('click', () => {
+                tcPlusSlides(1);
+          });
 
     //Timer
 
