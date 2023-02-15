@@ -80,10 +80,10 @@ let city1 = {};
         return this.name;
     };
     city1.exportStr = function(){
-        return "name=" + this.name + "\\" + this.population +"\\n";
+        return "name=" + this.name + "\\" + "population=" + this.population +"\\n";
     };
     city1.getCity = function(){
-        return getObj();
+        getObj();
     }
 let city2 = {
     name: "ГородM",
@@ -92,34 +92,24 @@ let city2 = {
         return this.name;
     },
     exportStr(){
-    return "name=" + this.name + "\\" + this.population +"\\n";
+        
+        return "name=" + this.name + "\\" + "population=" + this.population +"\\n";
     },
     getCity(){
+        getObj();
      }
     
 };
 
-let getObj = function(){
-    return this;
+function getObj(){
+    return this
 };
-console.log(`Первый город называется: ${city1.getName()}, Второй город называется: ${city2.getName()}`);
-console.log(`Первый город : ${city1.exportStr()}, Второй город: ${city2.exportStr()}`);
-console.log(`Проверка метода ${city1.getCity()}`)
+console.log(`Первый город называется: ${city1.getName()}, Второй город называется: ${city2.getName()}.`);
+console.log(`Первый город: ${city1.exportStr()}, Второй город: ${city2.exportStr()}.`);
+console.log(`Проверка метода - первый город: ${city1.getCity()}; второй город: ${city2.getCity()}.`);
 
 
 // // Создайте объект city2 через нотацию {name: "ГородM", population: 1e6}. ***
-// let city2 ={
-// name: "ГородM",
-// population: 1e6
-// };
-// 
-//     return "name=" + this.name + "\\" + this.population +"\\n";
-// };
-// console.log(city2.exportStr());
-
-// 
- 
-
 // Создайте у объектов city1 и city2 методы getName(), которые вернут  ***
 // соответствующие названия городов. ***
  

@@ -824,6 +824,8 @@ $(document).ready(function () {
 window.addEventListener('DOMContentLoaded', ()=>{
  //Табы
  'use strict';
+ if(document.querySelector('.op7')){
+        
     const tabs = document.querySelectorAll('.hero-menu_header li'), // Берём все табы меню
     linksOfTabs = document.querySelectorAll('.hero-menu_header a'), // Берём все ссылки меню
     tabsContent = document.querySelectorAll('.tab-content'),  // Берём контент для отображения
@@ -879,7 +881,7 @@ window.addEventListener('DOMContentLoaded', ()=>{
             });
         }
     });
-
+ } else if(document.querySelector('.column-section')){
     // Слайдер
     const slides = document.querySelectorAll('.events-carousel .swiper-slide'),//вначале класс блока-родителя через пробел, 
                                                                                //иначе цепляются лишние слайды из другой карусели
@@ -950,45 +952,48 @@ window.addEventListener('DOMContentLoaded', ()=>{
                 tcPlusSlides(1);
           });
 
+        } else if(document.querySelector('.cs-media')){
+
     //Timer
+        const timeEnd = '2023-02-19';
+        function getTimeRemaining(endtime){
+            const t = Date.parse(endtime) - Date.parse(new Date()),
+            days = Math.floor(t / (1000 * 60 * 60 * 24)),
+            hours = Math.floor(t / (1000 * 60 * 60) % 24),
+            minutes = Math.floor(t / (1000 * 60) % 60),
+            seconds = Math.floor(t / 1000 % 60);
+            return {
+                'total': t,
+                'days': days,
+                'hours': hours,
+                'minutes': minutes,
+                'seconds': seconds
+            };
 
-    const timeEnd = '2023-02-19';
-    function getTimeRemaining(endtime){
-        const t = Date.parse(endtime) - Date.parse(new Date()),
-        days = Math.floor(t / (1000 * 60 * 60 * 24)),
-        hours = Math.floor(t / (1000 * 60 * 60) % 24),
-        minutes = Math.floor(t / (1000 * 60) % 60),
-        seconds = Math.floor(t / 1000 % 60);
-        return {
-            'total': t,
-            'days': days,
-            'hours': hours,
-            'minutes': minutes,
-            'seconds': seconds
-        };
+        }
+        function setClock(selector, endtime){
+            const timer = document.querySelector(selector),
+                days = document.querySelector('.days'),
+                hours = document.querySelector('.hours'),
+                minutes = document.querySelector('.minutes'),
+                seconds = document.querySelector('.seconds'),
+                timeInterval = setInterval(updateClock, 1000);
+                updateClock();
+            function updateClock(){
+                const t = getTimeRemaining(endtime);
+                days.innerHTML = t.days;
+                hours.innerHTML = t.hours;
+                minutes.innerHTML = t.minutes;
+                seconds.innerHTML = t.seconds;
+                if(t.total <= 0){
+                    clearInterval(timeInterval);
+                }
 
-    }
-    function setClock(selector, endtime){
-        const timer = document.querySelector(selector),
-              days = document.querySelector('.days'),
-              hours = document.querySelector('.hours'),
-              minutes = document.querySelector('.minutes'),
-              seconds = document.querySelector('.seconds'),
-              timeInterval = setInterval(updateClock, 1000);
-              updateClock();
-        function updateClock(){
-            const t = getTimeRemaining(endtime);
-            days.innerHTML = t.days;
-            hours.innerHTML = t.hours;
-            minutes.innerHTML = t.minutes;
-            seconds.innerHTML = t.seconds;
-            if(t.total <= 0){
-                clearInterval(timeInterval);
             }
 
         }
-
+        setClock('timer', timeEnd);
+    
     }
-    setClock('timer', timeEnd);
 
 });
