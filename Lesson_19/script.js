@@ -75,38 +75,43 @@ console.log(worker.getSalary());
 
 let city1 = {};
     city1.name = "ГородN";
-    city1.population = 10000000;
-    city1.getName = function(){
-        return this.name;
-    };
-    city1.exportStr = function(){
-        return "name=" + this.name + "\\" + "population=" + this.population +"\\n";
-    };
-    city1.getCity = function(){
-        getObj();
-    }
+    city1.population = 10000000;  
+   
+    
 let city2 = {
     name: "ГородM",
-    population: 1e6,
-    getName(){
-        return this.name;
-    },
-    exportStr(){
-        
-        return "name=" + this.name + "\\" + "population=" + this.population +"\\n";
-    },
-    getCity(){
-        getObj();
-     }
-    
+    population: 1e6,        
 };
+
+function getName(){
+    return this.name;
+}
+
+city1.getName = getName;
+city2.getName= getName;
+
+function exportStr(){        
+    return "name=" + this.name + "\\" + "population=" + this.population +"\\n";
+}
+
+city1.exportStr = exportStr;
+city2.exportStr = exportStr;
 
 function getObj(){
     return this
 };
-console.log(`Первый город называется: ${city1.getName()}, Второй город называется: ${city2.getName()}.`);
-console.log(`Первый город: ${city1.exportStr()}, Второй город: ${city2.exportStr()}.`);
-console.log(`Проверка метода - первый город: ${city1.getCity()}; второй город: ${city2.getCity()}.`);
+
+function getCity (){
+    return getObj.apply(this).getName();
+}
+
+city1.getCity = getCity;
+city2.getCity = getCity;
+
+console.log(city1.exportStr());
+console.log(city2.exportStr());
+console.log(city1.getCity());
+console.log(city2.getCity());
 
 
 // // Создайте объект city2 через нотацию {name: "ГородM", population: 1e6}. ***
